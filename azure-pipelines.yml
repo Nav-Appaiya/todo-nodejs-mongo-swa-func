@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 trigger:
-- main
+- none
 
 variables:
 
@@ -26,8 +26,6 @@ stages:
   jobs:
   - job: Build
     displayName: Build
-    pool:
-      vmImage: $(vmImageName)
 
     steps:
     - task: ArchiveFiles@2
@@ -50,8 +48,6 @@ stages:
   - deployment: Deploy
     displayName: Deploy
     environment: $(environmentName)
-    pool:
-      vmImage: $(vmImageName)
     strategy:
       runOnce:
         deploy:
